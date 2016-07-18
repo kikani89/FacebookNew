@@ -16,7 +16,7 @@ require_once ('Facebook/autoload.php');
  * for the use of facebook namespace
  * easy to use
  */
-echo "hello"; 
+ 
 session_start();
 use Facebook\FacebookSession;
 use Facebook\FacebookRedirectLoginHelper;
@@ -31,6 +31,7 @@ use Facebook\GraphObject;
  * and session
  *
  */
+ echo "hello";
 FacebookSession::setDefaultApplication($fb_app_id, $fb_secret_id);
 $helper = new FacebookRedirectLoginHelper($fb_login_url);
 /**
