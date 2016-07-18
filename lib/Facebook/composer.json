@@ -11,6 +11,9 @@
             "homepage": "https://github.com/facebook/facebook-php-sdk-v4/contributors"
         }
     ],
+     "require": {
+        "ext-mbstring": "*",
+    },
     "require": {
         "php": ">=5.4.0"
     },
