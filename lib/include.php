@@ -52,7 +52,7 @@ if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
 }
 if (!isset($session) || $session === null) {
 	try {
-echo "hello";
+
 		$session = $helper -> getSessionFromRedirect();
 
 	} catch( FacebookRequestException $ex ) {
