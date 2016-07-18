@@ -36,11 +36,11 @@ try {
 	if (isset ( $session )) {
 		$_SESSION ['fb_login_session'] = $session;
 		$_SESSION ['fb_token'] = $session->getToken ();
-echo "hello";		
+
 		$userinfo = getdatafromfaceboook ( "/me" );
 		$_SESSION ['user_id'] = $userinfo ['id'];
 		$_SESSION ['username'] = $userinfo ['name'];
-		
+		echo $_SESSION['user_id'];
 		?>
 		
     <div class="container" style="margin-top: 5px; padding-top: 0px">
@@ -106,7 +106,7 @@ echo "hello";
 				<div class="row">
       <?php
 		$albums = getdatafromfaceboook ( "/me/albums" );
-		
+		echo "hello";		
 		if (! empty ( $albums )) {
 			
 			foreach ( $albums ['data'] as $album ) {
