@@ -16,6 +16,7 @@ require_once ('Facebook/autoload.php');
  * for the use of facebook namespace
  * easy to use
  */
+ echo "hello";
 session_start();
 use Facebook\FacebookSession;
 use Facebook\FacebookRedirectLoginHelper;
