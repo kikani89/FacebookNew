@@ -23,7 +23,7 @@
  * it set the all configuration for the facebook app
  */
 
-include_once ("../lib/include.php");
+include_once ("/lib/include.php");
 use Facebook\FacebookSession;
 use Facebook\FacebookRedirectLoginHelper;
 use Facebook\FacebookRequest;
