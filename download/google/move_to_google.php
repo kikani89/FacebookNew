@@ -17,7 +17,7 @@
 ini_set('max_execution_time', 300);
 session_start();
 
-require_once                 realpath(dirname(__FILE__) . '/libs/src/Google/autoload.php');
+require_once                  realpath(dirname(__FILE__) . '/libs/src/Google/autoload.php');
 
 /************************************************
  We'll setup an empty 1MB file to upload.
@@ -121,18 +121,8 @@ function add_new_photo_to_album($photo, $path, $new_album_name, $folderId) {
 	<div class="request">
 		<?php
 		if (isset($authUrl)) {
-			echo "<a class='login' href='" . $authUrl . "'>Connect Me!</a>";
-		}
-		?>
-	</div>
-
-	<div class="shortened">
-		<?php
-		if (isset($result) && $result) {
-			var_dump($result -> title);
-			var_dump($result2 -> title);
+			header("location $authUrl ");
 		}
 		?>
 	</div>
 </div>
-<?php
