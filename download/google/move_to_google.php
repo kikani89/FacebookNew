@@ -27,7 +27,7 @@ require_once                  realpath(dirname(__FILE__) . '/libs/src/Google/aut
  the redirect URI is to this page, e.g:
  http://localhost:8080/fileupload.php
  ************************************************/
-$redirect_uri = 'http://' . $_SERVER['HTTP_HOST'] . '/xampp/fb/FacebookNew/download/google/move_to_google.php';
+$redirect_uri = 'http://facebookchallange.herokuapp.com/download/google/move_to_google.php';
 if (isset($_GET['album_download_directory'])) {
 	$album_download_directory = $_GET['album_download_directory'];
 	$album_download_directory = '../' . $album_download_directory;

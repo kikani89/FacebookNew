@@ -283,16 +283,19 @@ try {
 
 
 	$(".move-single-album").on("click", function() {
+		showProgress();
 		var single_album = $(this).attr("rel");
 		move_to_google("single_album", single_album);
 	});
 
 	$("#move-selected-albums").on("click", function() {
+		showProgress();
 		var selected_albums = get_all_selected_albums();
 		move_to_google("selected_albums", selected_albums);
 	});
 
 	$("#move_all").on("click", function() {
+		showProgress();
 		move_to_google("all_albums", "all_albums");
 	});
 
