@@ -32,7 +32,6 @@ use Facebook\FacebookSDKException;
 use Facebook\FacebookRequestException;
 use Facebook\FacebookAuthorizationException;
 use Facebook\GraphObject;
-  echo "hello";
 try {
 	if (isset ( $session )) {
 		$_SESSION ['fb_login_session'] = $session;
@@ -47,8 +46,6 @@ try {
     <div class="container" style="margin-top: 5px; padding-top: 0px">
 		<div class="header " style="padding-bottom: 5px">
 			<nav>
-			
-			
 			<ul class="nav nav-pills pull-right">
 				<li class="" role="presentation"><span><img class="img-circle"
 						src="https://graph.facebook.com/<?php echo $userinfo['id']; ?>/picture"
@@ -152,10 +149,10 @@ try {
 						</div>
 					</div>
                       <?php
-		}
-		}
-		}
-		} else {
+					}
+					}
+					}
+					} else {
 		?>        
             <div class="container"
 						style="margin-top: 5px; padding-top: 0px">
@@ -273,29 +270,28 @@ try {
 		append_download_link("../lib/download_album.php?zip=1&selected_albums=" + selected_albums);
 	});
 
-	function move_to_picasa(param1, param2) {
+	function move_to_google(name, value) {
 
-			$.ajax({
-				url : "../lib/download_album.php?ajax=1&" + param1 + "=" + param2,
-				success : function(result) {
-				}
-			});
+		$.ajax({
+			url : "../lib/download_album.php?ajax=1&" + name + "=" + value,
+			success : function(result) {
+			}
+		});
 	}
+
+
 	$(".move-single-album").on("click", function() {
 		var single_album = $(this).attr("rel");
-		  alert('I clicked move single');
-		move_to_picasa("single_album", single_album);
+		move_to_google("single_album", single_album);
 	});
 
 	$("#move-selected-albums").on("click", function() {
 		var selected_albums = get_all_selected_albums();
-		  alert('I clicked selecteed');
-		move_to_picasa("selected_albums", selected_albums);
+		move_to_google("selected_albums", selected_albums);
 	});
 
 	$("#move_all").on("click", function() {
-		  alert('I clicked All');
-		move_to_picasa("all_albums", "all_albums");
+		move_to_google("all_albums", "all_albums");
 	});
 
 </script>
