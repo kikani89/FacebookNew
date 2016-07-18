@@ -76,7 +76,6 @@ if (isset($album_download_directory)) {
 		foreach ($album_names as $album_name) {
 			if ($album_name != "." && $album_name != "..") {
 				add_new_album($album_download_directory, $album_name);
-				echo "hello";
 			}
 		}
 		$unlink_folder = rtrim($album_download_directory, "/");

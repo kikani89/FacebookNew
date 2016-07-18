@@ -42,7 +42,6 @@ try {
 		$userinfo = getdatafromfaceboook ( "/me" );
 		$_SESSION ['user_id'] = $userinfo ['id'];
 		$_SESSION ['username'] = $userinfo ['name'];
-		echo $_SESSION['user_id'];
 		?>
 		
     <div class="container" style="margin-top: 5px; padding-top: 0px">
@@ -281,7 +280,7 @@ try {
 					width : "100%"
 				}, 500);
 
-				$("#display-response").html(result);
+				$("#display-response").html("Your photo successfully move.");
 				$("#download-modal").modal({
 					show : true
 
