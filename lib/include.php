@@ -9,7 +9,7 @@ $fb_secret_id = '06090170170002699844c87d1b5b40cc';
 
 $fb_login_url = 'http://facebookchallange.herokuapp.com/src/index.php';
 
-require_once ('Facebook/autoload.php');
+require_once ('Facebook/vendor/autoload.php');
 /**
  *
  * define the namespace alies
