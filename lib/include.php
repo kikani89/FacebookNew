@@ -3,7 +3,8 @@ ini_set('max_execution_time', 300);
 /**
  * it set the application id and application secret id
  */
-$fb_app_id = '1666410266911684';
+echo "hello";
+ $fb_app_id = '1666410266911684';
 $fb_secret_id = '06090170170002699844c87d1b5b40cc';
 
 $fb_login_url = 'http://facebookchallange.herokuapp.com/src/index.php';
@@ -57,7 +58,7 @@ if (!isset($session) || $session === null) {
 		print_r($ex);
 	}
 }
-echo "hello";
+
 function getdatafromfaceboook($url) {
    
 	$session = new FacebookSession($_SESSION['fb_token']);
