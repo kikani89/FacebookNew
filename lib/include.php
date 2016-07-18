@@ -31,7 +31,7 @@ use Facebook\GraphObject;
  * and session
  *
  */
- echo "hello";
+ 
 FacebookSession::setDefaultApplication($fb_app_id, $fb_secret_id);
 $helper = new FacebookRedirectLoginHelper($fb_login_url);
 /**
@@ -52,6 +52,7 @@ if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
 }
 if (!isset($session) || $session === null) {
 	try {
+echo "hello";
 		$session = $helper -> getSessionFromRedirect();
 
 	} catch( FacebookRequestException $ex ) {
