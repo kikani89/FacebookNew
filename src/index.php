@@ -277,6 +277,21 @@ try {
 		$.ajax({
 			url : "../lib/download_album.php?ajax=1&" + name + "=" + value,
 			success : function(result) {
+				$(".progress-bar").animate({
+					width : "100%"
+				}, 500);
+
+				$("#display-response").html(result);
+				$("#download-modal").modal({
+					show : true
+
+				});
+				setTimeout(function() {
+					$(".progress-container").hide();
+					//$(".progress-Bar").css('width', '10%');
+
+				}, 2000);
+
 			}
 		});
 	}

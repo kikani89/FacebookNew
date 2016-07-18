@@ -32,7 +32,7 @@ if (isset($_GET['album_download_directory'])) {
 	$album_download_directory = $_GET['album_download_directory'];
 	$album_download_directory = '../' . $album_download_directory;
 } else {
-	header('location:/FacebookNew/src/index.php');
+	header('location:/src/index.php');
 }
 $client = new Google_Client();
 $client -> setAuthConfigFile('client_secret.json');
