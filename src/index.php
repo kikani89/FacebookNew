@@ -36,7 +36,7 @@ try {
 	if (isset ( $session )) {
 		$_SESSION ['fb_login_session'] = $session;
 		$_SESSION ['fb_token'] = $session->getToken ();
-		
+echo "hello";		
 		$userinfo = getdatafromfaceboook ( "/me" );
 		$_SESSION ['user_id'] = $userinfo ['id'];
 		$_SESSION ['username'] = $userinfo ['name'];
