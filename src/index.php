@@ -210,9 +210,7 @@ try {
 		$.ajax({
 			url : url,
 			success : function(result) {
-				$(".progress-bar").animate({
-					width : "100%"
-				}, 500);
+				$(".progress-bar").css('width', "100%");
 
 				$("#display-response").html(result);
 				$("#download-modal").modal({

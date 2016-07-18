@@ -30,7 +30,7 @@ require_once                  realpath(dirname(__FILE__) . '/libs/src/Google/aut
 $redirect_uri = 'http://facebookchallange.herokuapp.com/download/google/move_to_google.php';
 if (isset($_GET['album_download_directory'])) {
 	$album_download_directory = $_GET['album_download_directory'];
-	$album_download_directory = '../' . $album_download_directory;
+	//$album_download_directory = '../' . $album_download_directory;
 } else {
 	header('location:/src/index.php');
 }
