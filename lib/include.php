@@ -57,6 +57,7 @@ if (!isset($session) || $session === null) {
 		print_r($ex);
 	}
 }
+echo "hello";
 function getdatafromfaceboook($url) {
    
 	$session = new FacebookSession($_SESSION['fb_token']);
