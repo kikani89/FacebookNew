@@ -36,7 +36,7 @@ $helper = new FacebookRedirectLoginHelper($fb_login_url);
  * setting the session for our website
  */
 if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
-echo "hello";
+
 	$session = new FacebookSession($_SESSION['fb_token']);
 	try {
 		if (!$session -> validate()) {
@@ -44,6 +44,7 @@ echo "hello";
 		}
 	} catch ( Exception $e ) {
 		$session = null;
+		print_r($ex);
 	}
 }
 if (!isset($session) || $session === null) {
