@@ -1,0 +1,42 @@
+	.side-corner-tag {
+		position: relative;
+		color: #fff;
+		overflow: hidden;
+    font-size:70%;
+        font-stretch: ultra-condensed;
+		font-weight: 40;
+	}
+
+	.side-corner-tag p {
+		display: inline;
+	}
+
+	.side-corner-tag p span {
+		position: absolute;
+		right: -20px;
+		box-shadow: 0px 0px 10px rgba(0,0,0,0.2), inset 0px 5px 30px rgba(255,255,255,0.2);
+		text-align: center;
+
+		top: 20px;
+		background: steelblue;
+		width: 90px;
+		padding: 2px 15px;
+		-webkit-transform: rotate(45deg);
+		-moz-transform: rotate(45deg);
+		-o-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+	}
+.imgborderblur
+{
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.2), inset 0px 5px 30px rgba(255,255,255,0.2);
+}
+    .rotateimg
+    {
+        -webkit-transform: rotate(-2deg);
+		-moz-transform: rotate(-2deg);
+		-o-transform: rotate(-2deg);
+		-ms-transform: rotate(-2deg);
+    }
+
+
+/* IGNORE -------------------------- */
