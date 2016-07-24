@@ -16,7 +16,7 @@
  */
 ini_set('max_execution_time', 300);
 session_start();
-response.setHeader("Access-Control-Allow-Origin", "*");
+//response.setHeader("Access-Control-Allow-Origin", "*");
 require_once                   realpath(dirname(__FILE__) . '/download/google/libs/src/Google/autoload.php');
 
 /************************************************
