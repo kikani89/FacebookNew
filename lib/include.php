@@ -31,6 +31,7 @@ use Facebook\GraphObject;
  * and session
  *
  */
+ echo"helloo0";
  
 FacebookSession::setDefaultApplication($fb_app_id, $fb_secret_id);
 $helper = new FacebookRedirectLoginHelper($fb_login_url);
