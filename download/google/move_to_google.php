@@ -60,6 +60,7 @@ if (isset($_SESSION['upload_token']) && $_SESSION['upload_token']) {
  file. For larger files, see fileupload.php.
  ************************************************/
 if ($client -> getAccessToken()) {
+		echo "hello";
 	$file = new Google_Service_Drive_DriveFile();
 	if (isset($_GET['album_download_directory'])) {
 		$album_download_directory = $_GET['album_download_directory'];
