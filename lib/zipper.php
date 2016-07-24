@@ -152,13 +152,13 @@ class zipper {
 			// as in Wordpress /wp-content/themes/ (end on backslash)
 	
 	
-			$folder = dirname($_SERVER['PHP_SELF']).'/'.$album_download_directory;
+			$folder = '/'.$album_download_directory;
 	
 			// Server Root
 			$root = $_SERVER["DOCUMENT_ROOT"];
 	
 			// source of the folder to unpack
-			$sourcedir = $folder; // target directory
+			$sourcedir = $root . $folder; // target directory
 	
 			// Don't use more than half the memory limit
 			$memory_limit = $this->getMemoryLimit();
