@@ -16,8 +16,8 @@
  */
 ini_set('max_execution_time', 300);
 session_start();
-response.addHeader("Access-Control-Allow-Origin", "*");
-require_once                  realpath(dirname(__FILE__) . '/libs/src/Google/autoload.php');
+response . addHeader("Access-Control-Allow-Origin", "*");
+require_once                   realpath(dirname(__FILE__) . '/libs/src/Google/autoload.php');
 
 /************************************************
  We'll setup an empty 1MB file to upload.
@@ -28,12 +28,7 @@ require_once                  realpath(dirname(__FILE__) . '/libs/src/Google/aut
  http://localhost:8080/fileupload.php
  ************************************************/
 $redirect_uri = 'http://facebookchallange.herokuapp.com/download/google/move_to_google.php';
-if (isset($_GET['album_download_directory'])) {
-	$album_download_directory = $_GET['album_download_directory'];
-	//$album_download_directory = '../' . $album_download_directory;
-} else {
-	header('location:/src/index.php');
-}
+
 $client = new Google_Client();
 $client -> setAuthConfigFile('client_secret.json');
 $client -> setRedirectUri($redirect_uri);
@@ -66,9 +61,14 @@ if (isset($_SESSION['upload_token']) && $_SESSION['upload_token']) {
  ************************************************/
 if ($client -> getAccessToken()) {
 	$file = new Google_Service_Drive_DriveFile();
-
-}
-if (isset($album_download_directory)) {
+	if (isset($_GET['album_download_directory'])) {
+		$album_download_directory = $_GET['album_download_directory'];
+		//$album_download_directory = '../' . $album_download_directory;
+	} else {
+		header('location:/src/index.php');
+	}
+	
+	if (isset($album_download_directory)) {
 	global $service;
 
 	if (file_exists($album_download_directory)) {
@@ -87,6 +87,8 @@ if (isset($album_download_directory)) {
 } else {
 	$response = 0;
 
+}
+	
 }
 function add_new_album($album_download_directory, $album_name) {
 	global $service;
