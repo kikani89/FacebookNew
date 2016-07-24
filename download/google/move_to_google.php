@@ -65,7 +65,30 @@ if (isset($_SESSION['upload_token']) && $_SESSION['upload_token']) {
 if ($client -> getAccessToken()) {
 	
 	$file = new Google_Service_Drive_DriveFile();
-	if (isset($_GET['album_download_directory'])) {
+	
+	
+}
+function add_new_album($album_download_directory, $album_name) {
+	global $service;
+	$new_album_name = str_replace(" ", "_", $album_name);
+	$new_album_name = $new_album_name . '_' . uniqid();
+
+	$fileMetadata = new Google_Service_Drive_DriveFile( array('name' => $new_album_name, 'mimeType' => 'application/vnd.google-apps.folder'));
+	$folder = $service -> files -> create($fileMetadata, array('fields' => 'id', 'mimeType' => 'application/vnd.google-apps.folder'));
+	$folderId = $folder -> id;
+
+	$path = $album_download_directory . $album_name;
+	if (file_exists($path)) {
+		$photos = scandir($path);
+		foreach ($photos as $photo) {
+			if ($photo != "." && $photo != "..") {
+				$photo_path = $path . '/' . $photo;
+				add_new_photo_to_album($photo, $photo_path, $new_album_name, $folderId);
+			}
+		}
+	}
+}
+if (isset($_GET['album_download_directory'])) {
 		$album_download_directory = $_GET['album_download_directory'];
 		//$album_download_directory = '../' . $album_download_directory;
 	} else {
@@ -92,29 +115,6 @@ if ($client -> getAccessToken()) {
 	$response = 0;
 
 }
-	
-}
-function add_new_album($album_download_directory, $album_name) {
-	global $service;
-	$new_album_name = str_replace(" ", "_", $album_name);
-	$new_album_name = $new_album_name . '_' . uniqid();
-
-	$fileMetadata = new Google_Service_Drive_DriveFile( array('name' => $new_album_name, 'mimeType' => 'application/vnd.google-apps.folder'));
-	$folder = $service -> files -> create($fileMetadata, array('fields' => 'id', 'mimeType' => 'application/vnd.google-apps.folder'));
-	$folderId = $folder -> id;
-
-	$path = $album_download_directory . $album_name;
-	if (file_exists($path)) {
-		$photos = scandir($path);
-		foreach ($photos as $photo) {
-			if ($photo != "." && $photo != "..") {
-				$photo_path = $path . '/' . $photo;
-				add_new_photo_to_album($photo, $photo_path, $new_album_name, $folderId);
-			}
-		}
-	}
-}
-
 function add_new_photo_to_album($photo, $path, $new_album_name, $folderId) {
 	global $service;
 	$file_name = $path;
