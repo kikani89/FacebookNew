@@ -23,7 +23,7 @@ class zipper {
 				$file = str_replace('\\', '/', $file);
 
 				// Ignore "." and ".." folders
-				if ($file !== "." || $file !== "..") {
+				if ($file !== "." && $file !== "..") {
 					if (in_array(substr($file, strrpos($file, '/') + 1), array('.', '..')))
 						continue;
 
