@@ -16,7 +16,7 @@
  */
 ini_set('max_execution_time', 300);
 session_start();
-header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Origin: http://facebookchallange.herokuapp.com/download/google/move_to_google.php');
 //response.setHeader("Access-Control-Allow-Origin", "*");
 require_once  'libs/src/Google/autoload.php';
 
