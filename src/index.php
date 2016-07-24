@@ -279,7 +279,7 @@ try {
 					width : "100%"
 				}, 500);
 
-				$("#display-response").html("Your photo successfully move.");
+				$("#display-response").html(result);
 				$("#download-modal").modal({
 					show : true
 
