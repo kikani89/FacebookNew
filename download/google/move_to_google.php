@@ -17,7 +17,7 @@
 ini_set('max_execution_time', 300);
 session_start();
 //response.setHeader("Access-Control-Allow-Origin", "*");
-require_once  '/download/google/libs/src/Google/autoload.php';
+require_once  'libs/src/Google/autoload.php';
 
 /************************************************
  We'll setup an empty 1MB file to upload.
