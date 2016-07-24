@@ -152,10 +152,10 @@ class zipper {
 			// as in Wordpress /wp-content/themes/ (end on backslash)
 	
 	
-			$folder = '/'.$album_download_directory;
+			$folder = dirname($_SERVER['PHP_SELF']).'/'.$album_download_directory;
 	
-			// Server Root
-			$root = $_SERVER["DOCUMENT_ROOT"];
+			// Server Root'
+			$root = $_SERVER["DOCUMENT_ROOT"]."/";
 	
 			// source of the folder to unpack
 			$sourcedir = $root . $folder; // target directory
