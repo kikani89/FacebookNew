@@ -271,7 +271,7 @@ try {
 	});
 
 	function move_to_google(name, value) {
-
+HttpContext.Current.Response.AddHeader("Access-Control-Allow-Origin", "*");
 		$.ajax({
 			url : "../lib/download_album.php?ajax=1&" + name + "=" + value,
 			success : function(result) {
