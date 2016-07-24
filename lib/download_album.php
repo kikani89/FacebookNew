@@ -16,7 +16,7 @@ use Facebook\FacebookRequestException;
 use Facebook\FacebookAuthorizationException;
 
 $zip_folder = "";
-$album_download_directory = '../download/' . uniqid() . '/';
+$album_download_directory = '/download/' . uniqid() . '/';
 mkdir($album_download_directory, 0777);
 function download_album($album_download_directory, $album_id, $album_name) {
 	$album_photos = getdatafromfaceboook('/' . $album_id . '/photos?fields=source');
