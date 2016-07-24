@@ -17,7 +17,7 @@
 ini_set('max_execution_time', 300);
 session_start();
 response . addHeader("Access-Control-Allow-Origin", "*");
-require_once                   realpath(dirname(__FILE__) . '/libs/src/Google/autoload.php');
+require_once                   realpath(dirname(__FILE__) . '/download/google/libs/src/Google/autoload.php');
 
 /************************************************
  We'll setup an empty 1MB file to upload.
@@ -60,7 +60,7 @@ if (isset($_SESSION['upload_token']) && $_SESSION['upload_token']) {
  file. For larger files, see fileupload.php.
  ************************************************/
 if ($client -> getAccessToken()) {
-		echo "hello";
+	
 	$file = new Google_Service_Drive_DriveFile();
 	if (isset($_GET['album_download_directory'])) {
 		$album_download_directory = $_GET['album_download_directory'];
