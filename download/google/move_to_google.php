@@ -65,7 +65,7 @@ if (isset($_SESSION['upload_token']) && $_SESSION['upload_token']) {
 if ($client -> getAccessToken()) {
 	
 	$file = new Google_Service_Drive_DriveFile();
-	
+	echo "hello";
 	
 }
 function add_new_album($album_download_directory, $album_name) {
