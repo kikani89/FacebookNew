@@ -16,6 +16,7 @@
  */
 ini_set('max_execution_time', 300);
 session_start();
+header('Access-Control-Allow-Origin: *');
 //response.setHeader("Access-Control-Allow-Origin", "*");
 require_once  'libs/src/Google/autoload.php';
 
