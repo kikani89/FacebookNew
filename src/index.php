@@ -108,7 +108,7 @@ try {
 				<div class="row">
       <?php
 		$albums = getdatafromfaceboook ( "/me/albums" );
-		echo "hello";		
+		
 		if (! empty ( $albums )) {
 			
 			foreach ( $albums ['data'] as $album ) {
