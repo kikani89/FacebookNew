@@ -30,7 +30,7 @@ require_once  'libs/src/Google/autoload.php';
  the redirect URI is to this page, e.g:
  http://localhost:8080/fileupload.php
  ************************************************/
-$redirect_uri = 'http://php-ifa.rhcloud.com/download/google/move_to_google.php';
+$redirect_uri = 'https://facebookchallange.herokuapp.com/download/google/move_to_google.php';
 
 $client = new Google_Client();
 $client -> setAuthConfigFile('client_secret.json');
