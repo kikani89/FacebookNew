@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta name="google-site-verification" content="ShOOjE4BmnzEDPvIElOMCd8MigR1k4R9mErQ3GkBMWU" />
-	<title></title>
+
 </head>
 <body>
 
