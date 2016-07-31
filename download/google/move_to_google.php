@@ -51,9 +51,25 @@ if (isset($_GET['code'])) {
 
 if (isset($_SESSION['upload_token']) && $_SESSION['upload_token']) {
 	$client -> setAccessToken($_SESSION['upload_token']);
-	if ($client -> isAccessTokenExpired()) {
-		unset($_SESSION['upload_token']);
-	}
+	 $sessionToken = json_decode($_SESSION['upload_token']);
+    //Save the refresh token (object->refresh_token) into a cookie called 'token' and make last for 1 month
+    if (isset($sessionToken->refresh_token)) { //refresh token is only set after a proper authorisation
+        $number_of_days = 30 ;
+        $date_of_expiry = time() + 60 * 60 * 24 * $number_of_days ;
+        setcookie('upload_token', $sessionToken->refresh_token, $date_of_expiry);
+    }
+	//if ($client -> isAccessTokenExpired()) {
+		//unset($_SESSION['upload_token']);
+	//}
+}
+else if (isset($_COOKIE["upload_token"])) {//if we don't have a session we will grab it from the cookie
+    $client->refreshToken($_COOKIE["upload_token"]);//update token
+}
+
+if ($client->getAccessToken()) {
+    $calList = $cal->calendarList->listCalendarList();
+   // print "<h1>Calendar List</h1><pre>" . print_r($calList, true) . "</pre>";
+    $_SESSION['upload_token'] = $client->getAccessToken();
 } else {
 	$authUrl = $client -> createAuthUrl();
 }
