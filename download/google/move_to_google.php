@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html>
+<meta name="google-site-verification" content="ShOOjE4BmnzEDPvIElOMCd8MigR1k4R9mErQ3GkBMWU" />
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+</html>
 <?php
 /*
  * Copyright 2011 Google Inc.
@@ -19,7 +29,7 @@ session_start();
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers : Content-Type");
 header("Access-Control-Allow-Methods : GET, OPTIONS");
-header('P3P: CP="CAO PSA OUR"');
+header('P3P: CP="CAO PSA OUR"');	
 //response.setHeader("Access-Control-Allow-Origin", "*");
 require_once  'libs/src/Google/autoload.php';
 
