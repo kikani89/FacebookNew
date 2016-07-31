@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>:: Welcome To Facebook Challenge ::</title>
-<script type="text/javascript" src="../lib/js/jquery-1.10.0.min.js"></script>
+<script type="text/javascript" src="../lib/js/jquery-3.1.0.min.js"></script>
 <link rel="stylesheet" href="../lib/css/bootstrap.css" />
 <link rel="stylesheet" href="../lib/css/bootstrap.min.css" />
 <link rel="stylesheet" href="../lib/css/style.css" />
