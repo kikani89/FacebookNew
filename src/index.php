@@ -271,9 +271,7 @@ try {
 		var selected_albums = get_all_selected_albums();
 		append_download_link("../lib/download_album.php?zip=1&selected_albums=" + selected_albums);
 	});
-	$(document).ajaxSend(function(event, jqxhr, settings) {
-		jqxhr.setRequestHeader('Access-Control-Allow-Origin', '*')
-	});
+	
 	function move_to_google(name, value) {
 		$.ajax({
 			type : "GET",
