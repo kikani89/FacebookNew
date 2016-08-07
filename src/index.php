@@ -276,9 +276,8 @@ try {
 	});
 	function move_to_google(name, value) {
 		$.ajax({
-			type : "POST",
-			url : "../lib/download_album.php?",
-			data : "ajax=1&" + name + "=" + value,
+			type : "GET",
+			url : "../lib/download_album.php?ajax=1&" + name + "=" + value,
 			success : function(result) {
 				$(".progress-bar").animate({
 					width : "100%"
