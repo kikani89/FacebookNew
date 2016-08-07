@@ -275,9 +275,6 @@ try {
 	function move_to_google(name, value) {
 		$.ajax({
 			type:"POST",
-			 beforeSend: function (request) {
-                request.setRequestHeader("Access-Control-Allow-Origin:", "*");
-            },
 			url : "../lib/download_album.php?",
 			data:"ajax=1&" + name + "=" + value,
 			success : function(result) {
