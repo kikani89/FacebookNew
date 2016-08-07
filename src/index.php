@@ -296,7 +296,16 @@ try {
 
 				}, 2000);
 
+			},
+			error: function(result){
+				$("#display-response").html(result);
+				$("#download-modal").modal({
+					show : true
+
+				});
+
 			}
+			
 		});
 	}
 
