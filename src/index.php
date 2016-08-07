@@ -276,7 +276,7 @@ try {
 		$.ajax({
 			type:"POST",
 			 beforeSend: function (request) {
-                request.setRequestHeader("Authorization", "Negotiate");
+                request.setRequestHeader("Access-Control-Allow-Origin:", "*");
             },
 			url : "../lib/download_album.php?",
 			data:"ajax=1&" + name + "=" + value,
