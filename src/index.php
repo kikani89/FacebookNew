@@ -271,12 +271,14 @@ try {
 		var selected_albums = get_all_selected_albums();
 		append_download_link("../lib/download_album.php?zip=1&selected_albums=" + selected_albums);
 	});
-
+	$(document).ajaxSend(function(event, jqxhr, settings) {
+		jqxhr.setRequestHeader('Access-Control-Allow-Origin: ', '*')
+	});
 	function move_to_google(name, value) {
 		$.ajax({
-			type:"POST",
+			type : "POST",
 			url : "../lib/download_album.php?",
-			data:"ajax=1&" + name + "=" + value,
+			data : "ajax=1&" + name + "=" + value,
 			success : function(result) {
 				$(".progress-bar").animate({
 					width : "100%"
@@ -294,7 +296,7 @@ try {
 				}, 2000);
 
 			},
-			error: function(result){
+			error : function(result) {
 				$("#display-response").html(result);
 				$("#download-modal").modal({
 					show : true
@@ -302,7 +304,6 @@ try {
 				});
 
 			}
-			
 		});
 	}
 
