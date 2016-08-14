@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="google-site-verification" content="ShOOjE4BmnzEDPvIElOMCd8MigR1k4R9mErQ3GkBMWU" />
+	<head>
+		<meta name="google-site-verification" content="ShOOjE4BmnzEDPvIElOMCd8MigR1k4R9mErQ3GkBMWU" />
 
-</head>
-<body>
+	</head>
+	<body>
 
-</body>
+	</body>
 </html>
 <?php
 /*
@@ -30,10 +30,10 @@
  file. For larger files, see fileupload.php.
  ************************************************/
 require_once 'google_login.php';
- if ($client -> getAccessToken()) {
-	
+if ($client -> getAccessToken()) {
+
 	$file = new Google_Service_Drive_DriveFile();
-	
+
 }
 function add_new_album($album_download_directory, $album_name) {
 	global $service;
@@ -55,14 +55,20 @@ function add_new_album($album_download_directory, $album_name) {
 		}
 	}
 }
+
 if (isset($_GET['album_download_directory'])) {
-		$album_download_directory = $_GET['album_download_directory'];
-		//$album_download_directory = '../' . $album_download_directory;
-	} else {
+	$album_download_directory = $_GET['album_download_directory'];
+	$_SESSION["album"] = $album_download_directory;
+	//$album_download_directory = '../' . $album_download_directory;
+} else {
+	if (!isset($_SESSION["album"]))
 		header('location:/src/index.php');
+	else {
+		$album_download_directory = $_SESSION["album"];
 	}
-	
-	if (isset($album_download_directory)) {
+}
+
+if (isset($album_download_directory)) {
 	global $service;
 
 	if (file_exists($album_download_directory)) {
