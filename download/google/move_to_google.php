@@ -78,7 +78,6 @@ else if (isset($_COOKIE["upload_token"])) {//if we don't have a session we will 
 }
 
 if ($client->getAccessToken()) {
-    $calList = $cal->calendarList->listCalendarList();
    // print "<h1>Calendar List</h1><pre>" . print_r($calList, true) . "</pre>";
     $_SESSION['upload_token'] = $client->getAccessToken();
 } else {
