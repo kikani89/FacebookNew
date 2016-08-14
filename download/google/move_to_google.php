@@ -30,6 +30,9 @@
  file. For larger files, see fileupload.php.
  ************************************************/
 require_once 'google_login.php';
+ ini_set('display_errors', 1); 
+error_reporting(E_ALL);
+
 if ($client -> getAccessToken()) {
 
 	$file = new Google_Service_Drive_DriveFile();
