@@ -24,12 +24,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+ ini_set('display_errors', 1); 
+error_reporting(E_ALL);
+ 
 ini_set('max_execution_time', 300);
 session_start();
-header('Access-Control-Allow-Origin: *');
-header("Access-Control-Allow-Headers : Content-Type");
-header("Access-Control-Allow-Methods : GET, OPTIONS");
-header('P3P: CP="CAO PSA OUR"');	
 //response.setHeader("Access-Control-Allow-Origin", "*");
 require_once  'libs/src/Google/autoload.php';
 
@@ -93,7 +92,6 @@ if ($client->getAccessToken()) {
 if ($client -> getAccessToken()) {
 	
 	$file = new Google_Service_Drive_DriveFile();
-	echo "hello";
 	
 }
 function add_new_album($album_download_directory, $album_name) {

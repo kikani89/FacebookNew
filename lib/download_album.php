@@ -72,7 +72,6 @@ if (isset($_GET['zip'])) {
 	echo $zipper -> get_zip($album_download_directory);
 } else {
 	$redirect ='location:../download/google/move_to_google.php?album_download_directory=' . $album_download_directory;
-	echo "<script> alert(".$redirect.");</script>";
 	if (isset($_GET['ajax'])) {
 		$redirect = $redirect . '&ajax=1';
 	}
