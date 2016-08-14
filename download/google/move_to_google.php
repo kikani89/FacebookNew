@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="google-site-verification" content="ShOOjE4BmnzEDPvIElOMCd8MigR1k4R9mErQ3GkBMWU" />
+<head>
+<meta name="google-site-verification" content="ShOOjE4BmnzEDPvIElOMCd8MigR1k4R9mErQ3GkBMWU" />
 
-	</head>
-	<body>
+</head>
+<body>
 
-	</body>
+</body>
 </html>
 <?php
 /*
@@ -24,19 +24,77 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+ 
+ini_set('max_execution_time', 300);
+session_start();
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers : Content-Type");
+header("Access-Control-Allow-Methods : GET, OPTIONS");
+header('P3P: CP="CAO PSA OUR"');	
+//response.setHeader("Access-Control-Allow-Origin", "*");
+require_once  'libs/src/Google/autoload.php';
+
+/************************************************
+ We'll setup an empty 1MB file to upload.
+ ************************************************/
+/************************************************
+ ATTENTION: Fill in these values! Make sure
+ the redirect URI is to this page, e.g:
+ http://localhost:8080/fileupload.php
+ ************************************************/
+$redirect_uri = 'https://facebookchallange.herokuapp.com/download/google/move_to_google.php';
+
+$client = new Google_Client();
+$client -> setAuthConfigFile('client_secret.json');
+$client -> setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . '/oauth2callback.php');
+$client -> addScope("https://www.googleapis.com/auth/drive", "https://www.googleapis.com/auth/drive.appfolder");
+$client->setIncludeGrantedScopes(true);
+$service = new Google_Service_Drive($client);
+
+if (isset($_REQUEST['logout'])) {
+	unset($_SESSION['upload_token']);
+}
+
+if (isset($_GET['code'])) {
+	$client -> authenticate($_GET['code']);
+	$_SESSION['upload_token'] = $client -> getAccessToken();
+	$redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+	header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
+}
+
+if (isset($_SESSION['upload_token']) && $_SESSION['upload_token']) {
+	$client -> setAccessToken($_SESSION['upload_token']);
+	 $sessionToken = json_decode($_SESSION['upload_token']);
+    //Save the refresh token (object->refresh_token) into a cookie called 'token' and make last for 1 month
+    if (isset($sessionToken->refresh_token)) { //refresh token is only set after a proper authorisation
+        $number_of_days = 30 ;
+        $date_of_expiry = time() + 60 * 60 * 24 * $number_of_days ;
+        setcookie('upload_token', $sessionToken->refresh_token, $date_of_expiry);
+    }
+	//if ($client -> isAccessTokenExpired()) {
+		//unset($_SESSION['upload_token']);
+	//}
+}
+else if (isset($_COOKIE["upload_token"])) {//if we don't have a session we will grab it from the cookie
+    $client->refreshToken($_COOKIE["upload_token"]);//update token
+}
+
+if ($client->getAccessToken()) {
+    $calList = $cal->calendarList->listCalendarList();
+   // print "<h1>Calendar List</h1><pre>" . print_r($calList, true) . "</pre>";
+    $_SESSION['upload_token'] = $client->getAccessToken();
+} else {
+	$authUrl = $client -> createAuthUrl();
+}
 
 /************************************************
  If we're signed in then lets try to upload our
  file. For larger files, see fileupload.php.
  ************************************************/
-require_once 'google_login.php';
- ini_set('display_errors', 1); 
-error_reporting(E_ALL);
-
 if ($client -> getAccessToken()) {
-
+	
 	$file = new Google_Service_Drive_DriveFile();
-
+	
 }
 function add_new_album($album_download_directory, $album_name) {
 	global $service;
@@ -58,20 +116,14 @@ function add_new_album($album_download_directory, $album_name) {
 		}
 	}
 }
-
 if (isset($_GET['album_download_directory'])) {
-	$album_download_directory = $_GET['album_download_directory'];
-	$_SESSION["album"] = $album_download_directory;
-	//$album_download_directory = '../' . $album_download_directory;
-} else {
-	if (!isset($_SESSION["album"]))
+		$album_download_directory = $_GET['album_download_directory'];
+		//$album_download_directory = '../' . $album_download_directory;
+	} else {
 		header('location:/src/index.php');
-	else {
-		$album_download_directory = $_SESSION["album"];
 	}
-}
-
-if (isset($album_download_directory)) {
+	
+	if (isset($album_download_directory)) {
 	global $service;
 
 	if (file_exists($album_download_directory)) {
