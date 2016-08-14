@@ -45,8 +45,9 @@ $redirect_uri = 'https://facebookchallange.herokuapp.com/download/google/move_to
 
 $client = new Google_Client();
 $client -> setAuthConfigFile('client_secret.json');
-$client -> setRedirectUri($redirect_uri);
+$client -> setRedirectUri('http://' . $_SERVER['HTTP_HOST'] . '/oauth2callback.php');
 $client -> addScope("https://www.googleapis.com/auth/drive", "https://www.googleapis.com/auth/drive.appfolder");
+$client->setIncludeGrantedScopes(true);
 $service = new Google_Service_Drive($client);
 
 if (isset($_REQUEST['logout'])) {
