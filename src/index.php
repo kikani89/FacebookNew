@@ -268,39 +268,43 @@ try {
 		var selected_albums = get_all_selected_albums();
 		append_download_link("../lib/download_album.php?zip=1&selected_albums=" + selected_albums);
 	});
-	
+
 	function move_to_google(name, value) {
 		$.ajax({
-			type : "GET",
-			url : "../lib/download_album.php?ajax=1&" + name + "=" + value,
-			success : function(result) {
-				$(".progress-bar").animate({
-					width : "100%"
-				}, 500);
+		type : "GET",
+		url : "../lib/download_album.php?ajax=1&" + name + "=" + value,
+		crossDomain : true,
+		datatype:"jsonp",
+		xhrFields: {
+		withCredentials: true
+		},
+		success : function(result) {
+			$(".progress-bar").animate({
+				width : "100%"
+			}, 500);
 
-				$("#display-response").html(result);
-				$("#download-modal").modal({
-					show : true
+			$("#display-response").html(result);
+			$("#download-modal").modal({
+				show : true
 
-				});
-				setTimeout(function() {
-					$(".progress-container").hide();
-					//$(".progress-Bar").css('width', '10%');
+			});
+			setTimeout(function() {
+				$(".progress-container").hide();
+				//$(".progress-Bar").css('width', '10%');
 
-				}, 2000);
+			}, 2000);
 
-			},
-			error : function(result) {
-				$("#display-response").html(result);
-				$("#download-modal").modal({
-					show : true
+		}, error : function(result) {
+			$("#display-response").html(result);
+			$("#download-modal").modal({
+				show : true
 
-				});
+			});
 
-			}
-		});
+		}
+	});
+
 	}
-
 
 	$(".move-single-album").on("click", function() {
 		showProgress();
